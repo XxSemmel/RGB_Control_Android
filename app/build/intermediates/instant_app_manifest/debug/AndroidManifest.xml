@@ -29,6 +29,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="de.rgb_control.MainNavigation"
+            android:label="@string/title_activity_main_navigation" />
+        <activity
             android:name="de.rgb_control.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreenTheme" >
@@ -40,8 +43,13 @@
         </activity>
         <activity
             android:name="de.rgb_control.MainActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="de.rgb_control.lifecycle-process"
+            android:exported="false"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             int position = i;
+            BluetoothDevice device= devices.get(position).device;
+            Intent intent = new Intent(getApplicationContext(), MainNavigation.class);
+            startActivity(intent);
+
         }
     };
 

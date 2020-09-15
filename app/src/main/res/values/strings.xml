@@ -5,4 +5,8 @@
 
     <string name="info_dialog_title">Information</string>
     <string name="info_dialog_body">test</string>
+    <string name="title_activity_main_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_effects">Effekte</string>
+    <string name="title_settings">Einstellungen</string>
 </resources>
