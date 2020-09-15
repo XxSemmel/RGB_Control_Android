@@ -3,6 +3,9 @@ package de.rgb_control;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothProfile;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanFilter;
@@ -17,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -118,13 +122,65 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             int position = i;
+            loading_indicator.setVisible(true);
             BluetoothDevice device= devices.get(position).device;
-            Intent intent = new Intent(getApplicationContext(), MainNavigation.class);
-            startActivity(intent);
+
+            device.connectGatt(getApplicationContext(), false, callback).connect();
+            listView.setEnabled(false);
+
 
         }
     };
 
+
+    private BluetoothGattCallback callback = new BluetoothGattCallback() {
+        @Override
+        public void onConnectionStateChange(final BluetoothGatt gatt, int status, int newState) {
+            super.onConnectionStateChange(gatt, status, newState);
+            if(newState== BluetoothProfile.STATE_CONNECTED){
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading_indicator.setVisible(false);
+                        Intent intent = new Intent(getApplicationContext(), MainNavigation.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+            else{
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("Error");
+                        builder.setMessage("Verbindung zum Gerät fehlgeschlagen!");
+
+                        builder.setIcon(R.drawable.ic_warning);
+                        builder.setCancelable(false);
+                        builder.setPositiveButton(
+                                "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        gatt.disconnect();
+                                        gatt.close();
+                                        listView.setEnabled(true);
+                                        loading_indicator.setVisible(false);
+                                    }
+                                });
+
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
+                });
+
+            }
+        }
+    };
 
 
     SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
@@ -159,6 +215,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onScanFailed(int errorCode) {
                     super.onScanFailed(errorCode);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Scan failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
                     loading_indicator.setVisible(false);
                 }
 

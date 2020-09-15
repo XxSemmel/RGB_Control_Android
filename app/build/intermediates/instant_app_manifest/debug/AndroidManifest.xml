@@ -30,9 +30,10 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="de.rgb_control.MainNavigation"
-            android:label="@string/title_activity_main_navigation" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="de.rgb_control.SplashActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreenTheme" >
             <intent-filter>
@@ -43,6 +44,7 @@
         </activity>
         <activity
             android:name="de.rgb_control.MainActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait" />
 
         <provider

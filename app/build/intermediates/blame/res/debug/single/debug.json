@@ -108,12 +108,12 @@
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/navigation/mobile_navigation.xml"
     },
     {
-        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_ic_baseline_settings.xml.flat",
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/drawable/ic_baseline_settings.xml"
+    },
+    {
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/layout_main_navigation.xml.flat",

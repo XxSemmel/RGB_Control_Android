@@ -1,14 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
+MERGED from [com.github.duanhong169:colorpicker:1.1.6] /home/benedikt/.gradle/caches/transforms-2/files-2.1/324d6896485424ccfcc38a97b064627a/jetified-colorpicker-1.1.6/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/86e1e5d883ec66c1063a0d9a82a27792/constraintlayout-2.0.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d0f92c0b26fabb47a28488bab3cc8456/navigation-ui-2.3.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.material:material:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d776e52f087aabc381b0b4907fc988e8/material-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.duanhong169:checkerboarddrawable:1.0.2] /home/benedikt/.gradle/caches/transforms-2/files-2.1/23745ca311f41348dd64d20103de9316/jetified-checkerboarddrawable-1.0.2/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/bf96d2b5a86ecd602a621e7e96856420/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/a083b9190df6cd0b2eed1b8d83acb3d5/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/547db4cebdfc068394a5645d2650d6b8/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-fragment:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/f99a902f1ef24516d77448bc7722a0ad/navigation-fragment-2.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/db95b54e52e838ca6dc927129ccd5b36/lifecycle-extensions-2.2.0/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/7c0677be8011741026309ef690a9f4db/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -41,20 +43,21 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] /home/benedikt/.gradle/caches
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/eaa1cbe2ef40ba62ba3fc8b8fb69519a/lifecycle-viewmodel-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/67aa86ef8808cac41aa5afe6d271f3ea/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/1e0614212b25f4ae67724a3587ed8129/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
-INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
+MERGED from [com.github.duanhong169:logger:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/dae134b8421cdf3944720bd4e2739173/jetified-logger-1.0.0/AndroidManifest.xml:2:1-11:12
+INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
+INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
 	package
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:3:5-29
 		INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 		INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
 		INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-38:12
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:1-39:12
 		INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:2:11-69
@@ -77,11 +80,11 @@ ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:
 	android:name
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:10:9-53
 application
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:13:5-36:19
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:13:5-37:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/86e1e5d883ec66c1063a0d9a82a27792/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/86e1e5d883ec66c1063a0d9a82a27792/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
-MERGED from [com.google.android.material:material:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d776e52f087aabc381b0b4907fc988e8/material-1.2.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d776e52f087aabc381b0b4907fc988e8/material-1.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:22:5-20
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/db95b54e52e838ca6dc927129ccd5b36/lifecycle-extensions-2.2.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/db95b54e52e838ca6dc927129ccd5b36/lifecycle-extensions-2.2.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.core:core:1.3.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/ae3468b444d41a56f261ecbb8448fe17/core-1.3.1/AndroidManifest.xml:24:5-89
@@ -105,49 +108,57 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/bened
 	android:theme
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:19:9-40
 activity#de.rgb_control.MainNavigation
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:20:9-22:79
-	android:label
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:22:13-67
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:20:9-22:61
+	android:screenOrientation
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:22:13-49
 	android:name
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:21:13-43
 activity#de.rgb_control.SplashActivity
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:23:9-32:20
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:23:9-33:20
 	android:screenOrientation
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:25:13-49
+	android:noHistory
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:27:13-37
 	android:theme
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:26:13-53
 	android:name
 		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:24:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:27:13-31:29
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:28:17-69
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:28:25-66
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:30:17-77
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:30:27-74
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:31:27-74
 activity#de.rgb_control.MainActivity
-ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:33:9-35:61
+ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:34:9-36:86
 	android:screenOrientation
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:35:13-49
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:36:13-49
+	android:noHistory
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:36:50-74
 	android:name
-		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:34:13-41
+		ADDED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:35:13-41
 uses-sdk
 INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
+MERGED from [com.github.duanhong169:colorpicker:1.1.6] /home/benedikt/.gradle/caches/transforms-2/files-2.1/324d6896485424ccfcc38a97b064627a/jetified-colorpicker-1.1.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.duanhong169:colorpicker:1.1.6] /home/benedikt/.gradle/caches/transforms-2/files-2.1/324d6896485424ccfcc38a97b064627a/jetified-colorpicker-1.1.6/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/86e1e5d883ec66c1063a0d9a82a27792/constraintlayout-2.0.1/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/86e1e5d883ec66c1063a0d9a82a27792/constraintlayout-2.0.1/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d0f92c0b26fabb47a28488bab3cc8456/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d0f92c0b26fabb47a28488bab3cc8456/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.material:material:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d776e52f087aabc381b0b4907fc988e8/material-1.2.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d776e52f087aabc381b0b4907fc988e8/material-1.2.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.github.duanhong169:checkerboarddrawable:1.0.2] /home/benedikt/.gradle/caches/transforms-2/files-2.1/23745ca311f41348dd64d20103de9316/jetified-checkerboarddrawable-1.0.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.duanhong169:checkerboarddrawable:1.0.2] /home/benedikt/.gradle/caches/transforms-2/files-2.1/23745ca311f41348dd64d20103de9316/jetified-checkerboarddrawable-1.0.2/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/bf96d2b5a86ecd602a621e7e96856420/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/bf96d2b5a86ecd602a621e7e96856420/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/a083b9190df6cd0b2eed1b8d83acb3d5/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/a083b9190df6cd0b2eed1b8d83acb3d5/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/547db4cebdfc068394a5645d2650d6b8/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/547db4cebdfc068394a5645d2650d6b8/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/f99a902f1ef24516d77448bc7722a0ad/navigation-fragment-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-fragment:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/f99a902f1ef24516d77448bc7722a0ad/navigation-fragment-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-extensions:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/db95b54e52e838ca6dc927129ccd5b36/lifecycle-extensions-2.2.0/AndroidManifest.xml:20:5-22:41
@@ -212,6 +223,8 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/bened
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/67aa86ef8808cac41aa5afe6d271f3ea/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/1e0614212b25f4ae67724a3587ed8129/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/1e0614212b25f4ae67724a3587ed8129/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.duanhong169:logger:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/dae134b8421cdf3944720bd4e2739173/jetified-logger-1.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.duanhong169:logger:1.0.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/dae134b8421cdf3944720bd4e2739173/jetified-logger-1.0.0/AndroidManifest.xml:7:5-9:41
 INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 INJECTED from /home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
