@@ -1,35 +1,99 @@
 package de.rgb_control.ui.settings;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
+import java.util.Objects;
+
+import de.rgb_control.MainActivity;
 import de.rgb_control.R;
+import de.rgb_control.helper.BLE;
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
 
-    private SettingsViewModel notificationsViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(SettingsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    private BLE control;
+
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+
+        control=MainActivity.control;
+        setPreferencesFromResource(R.xml.preferences, rootKey);
+
+        EditTextPreference neopixels = findPreference("numb");
+        EditTextPreference rename = findPreference("name");
+        rename.setOnPreferenceChangeListener(namechange);
+        neopixels.setOnPreferenceChangeListener(neopixelchange);
+
     }
+
+
+    EditTextPreference.OnPreferenceChangeListener namechange = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            control.changeDeviceName(newValue.toString());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("Information");
+            builder.setMessage("Dein Gerät benötigt einen Neustart, damit die Änderungen übernommen werden! Jetzt neustarten?");
+
+            builder.setIcon(R.drawable.ic_info);
+            builder.setPositiveButton(
+                    "Neustarten",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            control.reboot();
+                            android.os.Process.killProcess(android.os.Process.myPid()); //exit
+                        }
+                    });
+            builder.setNegativeButton("Später", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+            return true;
+        }
+    };
+
+    EditTextPreference.OnPreferenceChangeListener neopixelchange = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, final Object newValue) {
+            control.sendNeopixels(newValue.toString());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("Information");
+            builder.setMessage("Dein Gerät benötigt einen Neustart, damit die Änderungen übernommen werden! Jetzt neustarten?");
+
+            builder.setIcon(R.drawable.ic_info);
+            builder.setPositiveButton(
+                    "Neustarten",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            control.reboot();
+                            android.os.Process.killProcess(android.os.Process.myPid()); //exit
+                        }
+                    });
+            builder.setNegativeButton("Später", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+            return true;
+        }
+    };
+
+
 }

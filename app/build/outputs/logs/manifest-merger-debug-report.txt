@@ -8,6 +8,7 @@ MERGED from [com.github.duanhong169:colorpicker:1.1.6] /home/benedikt/.gradle/ca
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/86e1e5d883ec66c1063a0d9a82a27792/constraintlayout-2.0.1/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d0f92c0b26fabb47a28488bab3cc8456/navigation-ui-2.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.preference:preference:1.1.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/e3ce7e7cf0568bf54350349961cc10db/preference-1.1.1/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.duanhong169:checkerboarddrawable:1.0.2] /home/benedikt/.gradle/caches/transforms-2/files-2.1/23745ca311f41348dd64d20103de9316/jetified-checkerboarddrawable-1.0.2/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/bf96d2b5a86ecd602a621e7e96856420/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/547db4cebdfc068394a5645d2650d6b8/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -153,6 +154,8 @@ MERGED from [androidx.navigation:navigation-ui:2.3.0] /home/benedikt/.gradle/cac
 MERGED from [androidx.navigation:navigation-ui:2.3.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d0f92c0b26fabb47a28488bab3cc8456/navigation-ui-2.3.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.2.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fee048776b4040c0a73e83e4303a6cff/material-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.preference:preference:1.1.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/e3ce7e7cf0568bf54350349961cc10db/preference-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.1.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/e3ce7e7cf0568bf54350349961cc10db/preference-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.duanhong169:checkerboarddrawable:1.0.2] /home/benedikt/.gradle/caches/transforms-2/files-2.1/23745ca311f41348dd64d20103de9316/jetified-checkerboarddrawable-1.0.2/AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.duanhong169:checkerboarddrawable:1.0.2] /home/benedikt/.gradle/caches/transforms-2/files-2.1/23745ca311f41348dd64d20103de9316/jetified-checkerboarddrawable-1.0.2/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/bf96d2b5a86ecd602a621e7e96856420/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41

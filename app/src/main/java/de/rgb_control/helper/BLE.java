@@ -2,17 +2,15 @@ package de.rgb_control.helper;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
-
-import androidx.annotation.Nullable;
-
-import java.util.Optional;
 import java.util.UUID;
 
 public class BLE {
 
     private BluetoothGatt gatt;
     private BluetoothGattCharacteristic rgb_characteristic;
-    BluetoothGattService color_service;
+    private BluetoothGattCharacteristic neopixels_characteristic;
+    private BluetoothGattCharacteristic reboot;
+    private BluetoothGattCharacteristic name;
     private boolean onServiceInit = false;
     private int lastColor;
 
@@ -25,8 +23,13 @@ public class BLE {
     }
 
     public void initServices(){
-        color_service= gatt.getService(UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b"));
+        BluetoothGattService color_service = gatt.getService(UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b"));
         rgb_characteristic = color_service.getCharacteristic(UUID.fromString("0bca6a30-1418-4fd9-a7d2-950beb793e86"));
+        BluetoothGattService settings_service = gatt.getService(UUID.fromString("cfa34f22-6f5a-4587-95af-bc4cc057610b"));
+        neopixels_characteristic = settings_service.getCharacteristic(UUID.fromString("99cf3c7b-0f41-4adc-ba90-0b5c6242af06"));
+        reboot = settings_service.getCharacteristic(UUID.fromString("8b9787e5-8192-4104-a87e-a4fa80c304e6"));
+        name=settings_service.getCharacteristic(UUID.fromString("3aa67643-5d02-4278-9db0-a95993c011d7"));
+
         onServiceInit = true;
     }
 
@@ -100,6 +103,27 @@ public class BLE {
         sendColor(color, true);
     }
 
+    public void sendNeopixels(String count){
+        if(onServiceInit){
+            neopixels_characteristic.setValue(count);
+            gatt.writeCharacteristic(neopixels_characteristic);
+        }
+
+    }
+
+    public void reboot(){
+        if(onServiceInit){
+            reboot.setValue("1");
+            gatt.writeCharacteristic(reboot);
+        }
+    }
+
+    public void changeDeviceName(String device_name){
+        if(onServiceInit){
+            name.setValue(device_name);
+            gatt.writeCharacteristic(name);
+        }
+    }
 
 
 

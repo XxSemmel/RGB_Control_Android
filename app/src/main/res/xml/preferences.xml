@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="RGB Strip">
+
+        <EditTextPreference android:key="numb"
+            android:title="Neopixel"
+            android:defaultValue="100"
+            android:dialogLayout="@layout/preference_edit_number"
+            android:summary="Verändere die Anzahl deiner Pixel"
+            android:icon="@drawable/ic_number"/>
+
+
+
+
+        <EditTextPreference
+            android:key="name"
+            android:title="Name"
+            android:summary="Benenne dein Gerät um"
+            android:dialogMessage="Gebe einen neuen Namen ein"
+            android:icon="@drawable/rename"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>
