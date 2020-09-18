@@ -34,9 +34,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import de.rgb_control.devicelist.Data;
+import de.rgb_control.helper.BLE;
 import de.rgb_control.helper.Helper;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static BLE control;
 
     private static final int REQUEST_BT_ENABLE = 0;
     private BluetoothAdapter mBluetoothAdapter  = null;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem loading_indicator;
 
     private ArrayList<Data> devices;
+    private BluetoothDevice device;
     private ListView listView;
     private de.rgb_control.CustomAdapter adapter;
     private SwipeRefreshLayout refreshLayout;
@@ -143,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         loading_indicator.setVisible(false);
+                        control = new BLE(gatt);
                         Intent intent = new Intent(getApplicationContext(), MainNavigation.class);
                         startActivity(intent);
                     }
@@ -179,6 +184,15 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             }
+
+        }
+
+        @Override
+        public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+            super.onServicesDiscovered(gatt, status);
+            if(status==BluetoothGatt.GATT_SUCCESS){
+                control.initServices();
+            }
         }
     };
 
@@ -200,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
 
                     super.onScanResult(callbackType, result);
 
-                    BluetoothDevice device = result.getDevice();
+                    device = result.getDevice();
 
 
                     if(!scanResults.contains(device)){
