@@ -125,6 +125,10 @@ public class BLE {
         }
     }
 
+    public int getColor(){
+        return lastColor;
+    }
+
 
 
 }
