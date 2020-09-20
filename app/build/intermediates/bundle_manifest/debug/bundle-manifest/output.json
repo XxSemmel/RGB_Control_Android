@@ -21,7 +21,7 @@
       "properties": {
         "packageId": "de.rgb_control",
         "split": "",
-        "minSdkVersion": "25"
+        "minSdkVersion": "27"
       }
     }
   ]

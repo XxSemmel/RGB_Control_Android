@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="appstyles_labels">
+        <item>System default</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+
+    <string-array name="appstyles_values">
+        <item>system_default</item>
+        <item>dark</item>
+        <item>light</item>
+    </string-array>
+
+</resources>

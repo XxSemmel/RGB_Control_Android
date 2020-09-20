@@ -40,16 +40,12 @@
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_progressbar.xml.flat",
-        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/drawable/progressbar.xml"
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/xml/preferences.xml"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
-        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/xml/preferences.xml"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",

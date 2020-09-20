@@ -25,6 +25,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         // Stuff that updates the UI
-                        loading_indicator.setVisible(false);
+                        hideLoading();
                         refreshLayout.setRefreshing(false);
 
                     }
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             int position = i;
-            loading_indicator.setVisible(true);
+            showLoading();
             BluetoothDevice device= devices.get(position).device;
 
             device.connectGatt(getApplicationContext(), false, callback).connect();
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        loading_indicator.setVisible(false);
+                        hideLoading();
                         control = new BLE(gatt);
                         Intent intent = new Intent(getApplicationContext(), MainNavigation.class);
                         startActivity(intent);
@@ -174,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                                         gatt.disconnect();
                                         gatt.close();
                                         listView.setEnabled(true);
-                                        loading_indicator.setVisible(false);
+                                        hideLoading();
                                     }
                                 });
 
@@ -201,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onRefresh() {
             onBLEScan();
-            loading_indicator.setVisible(true);
+            showLoading();
         }
     };
 
@@ -237,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-                    loading_indicator.setVisible(false);
+                    hideLoading();
                 }
 
             };
@@ -326,6 +327,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showLoading(){
+        if(loading_indicator!=null){
+            loading_indicator.setVisible(true);
+        }
+    }
+
+    private void hideLoading(){
+        if(loading_indicator!=null){
+            loading_indicator.setVisible(false);
+        }
     }
 
 

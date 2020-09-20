@@ -1,10 +1,13 @@
 package de.rgb_control.ui.settings;
 
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import de.rgb_control.MainActivity;
@@ -24,10 +27,36 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         EditTextPreference neopixels = findPreference("numb");
         EditTextPreference rename = findPreference("name");
+        ListPreference appstyle = findPreference("styles");
+        appstyle.setOnPreferenceChangeListener(appstylechange);
         rename.setOnPreferenceChangeListener(namechange);
         neopixels.setOnPreferenceChangeListener(neopixelchange);
 
     }
+
+
+
+
+    ListPreference.OnPreferenceChangeListener appstylechange = new ListPreference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            switch (newValue.toString()){
+                case "system_default":
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                    break;
+                case "dark":
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    break;
+                case "light":
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    break;
+            }
+            return true;
+        }
+    };
+
+
+
 
 
     EditTextPreference.OnPreferenceChangeListener namechange = new Preference.OnPreferenceChangeListener() {

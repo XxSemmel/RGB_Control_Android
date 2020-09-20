@@ -62,6 +62,7 @@ public class BLE {
 
         if(onServiceInit){
 
+
             if(lastColor!=color){
 
                 int red = (color >> 16) & 0xFF;

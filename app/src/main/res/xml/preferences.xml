@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="App">
+
+        <ListPreference android:key="styles"
+            android:title="App Style"
+            android:entries="@array/appstyles_labels"
+            android:entryValues="@array/appstyles_values"
+            android:defaultValue="system_default"
+            />
+
+    </PreferenceCategory>
+
+
     <PreferenceCategory android:title="RGB Strip">
 
         <EditTextPreference android:key="numb"

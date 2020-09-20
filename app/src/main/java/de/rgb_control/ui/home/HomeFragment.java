@@ -4,14 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 import de.rgb_control.MainActivity;
 import de.rgb_control.R;
 import de.rgb_control.helper.BLE;
+import petrov.kristiyan.colorpicker.ColorPicker;
 import top.defaults.colorpicker.ColorObserver;
 import top.defaults.colorpicker.ColorPickerView;
 
@@ -20,6 +24,7 @@ public class HomeFragment extends Fragment {
 
     private BLE control;
     public static boolean powerstate = true;
+    private ColorPickerView colorPicker;
 
 
     public HomeFragment() {
@@ -29,7 +34,9 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final ColorPickerView colorPicker = root.findViewById(R.id.colorPicker);
+        colorPicker = root.findViewById(R.id.colorPicker);
+        Button maincolors = root.findViewById(R.id.maincolors);
+        maincolors.setOnClickListener(maincolorclick);
         FloatingActionButton btn = root.findViewById(R.id.powerbutton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +59,16 @@ public class HomeFragment extends Fragment {
 
         control=MainActivity.control;
 
-        colorPicker.setInitialColor(control.getColor());
+        if(control.getColor()!=0)
+        {
+            colorPicker.setInitialColor(control.getColor());
+
+        }
+        else {
+            colorPicker.setInitialColor(16711680);
+            control.sendColor(16711680);
+        }
+
 
         return root;
     }
@@ -68,4 +84,44 @@ public class HomeFragment extends Fragment {
             }
         }
     };
+
+
+    Button.OnClickListener maincolorclick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final ColorPicker picker = new ColorPicker(getActivity());
+            picker.setTitle("Wähle deine Farbe aus");
+            picker.setColors(getColors());
+            picker.setOnFastChooseColorListener(new ColorPicker.OnFastChooseColorListener(){
+
+                @Override
+                public void setOnFastChooseColorListener(int position, int color) {
+                    colorObserver.onColor(color, true, false );
+                    colorPicker.setInitialColor(color);
+                }
+
+                @Override
+                public void onCancel() {
+
+                }
+            });
+            picker.show();
+
+        }
+    };
+
+    private ArrayList<String> getColors(){
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("#ff0000"); //red
+        colors.add("#00FF00");//green
+        colors.add("#0000FF");//blue
+        colors.add("#FFFFFF"); //white
+        colors.add("#FFFF00"); //yellow
+        colors.add("#B10DC9");//purple
+        colors.add("#00eeff");//lightblue
+        colors.add("#ff00cc");//lila
+        colors.add("#996633");//brown
+        colors.add("#cccc00");//darkyellow
+        return colors;
+    }
 }
