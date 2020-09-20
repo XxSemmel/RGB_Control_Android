@@ -4,8 +4,16 @@
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/layout/activity_main.xml"
     },
     {
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_ic_effects.xml.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/drawable/ic_effects.xml"
+    },
+    {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/layout_effect_listitem.xml.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/layout/effect_listitem.xml"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_ic_launcher.xml.flat",
@@ -40,12 +48,12 @@
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
-        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/xml/preferences.xml"
-    },
-    {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/xml/preferences.xml"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
@@ -62,6 +70,10 @@
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_ic_brightness.xml.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/drawable/ic_brightness.xml"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/menu_main_menu.xml.flat",
@@ -114,6 +126,10 @@
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_rename.xml.flat",
         "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/drawable/rename.xml"
+    },
+    {
+        "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_ic_rainbow.xml.flat",
+        "source": "/home/benedikt/Projects/RGB_Control/app/src/main/res/drawable/ic_rainbow.xml"
     },
     {
         "merged": "/home/benedikt/Projects/RGB_Control/app/build/intermediates/res/merged/debug/drawable_ic_baseline_settings.xml.flat",

@@ -9,6 +9,7 @@
             android:entries="@array/appstyles_labels"
             android:entryValues="@array/appstyles_values"
             android:defaultValue="system_default"
+            android:icon="@drawable/ic_brightness"
             />
 
     </PreferenceCategory>

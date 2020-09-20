@@ -1691,7 +1691,9 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_arrow_down_24dp
 drawable ic_baseline_settings
+drawable ic_brightness
 drawable ic_dashboard_black_24dp
+drawable ic_effects
 drawable ic_home_black_24dp
 drawable ic_info
 drawable ic_launcher
@@ -1703,6 +1705,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_notifications_black_24dp
 drawable ic_number
+drawable ic_rainbow
 drawable ic_warning
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -2116,7 +2119,6 @@ id textEnd
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id text_dashboard
 id text_input_end_icon
 id text_input_start_icon
 id textinput_counter
@@ -2235,6 +2237,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout device_list
+layout effect_listitem
 layout expand_button
 layout fragment_effects
 layout fragment_home

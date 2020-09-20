@@ -20,7 +20,7 @@
             android:textStyle="bold"
             android:textSize="25sp"
             android:id="@+id/device_list_name"
-            android:textColor="#4d4d4d"
+            android:textColor="?attr/colorControlNormal"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             />
