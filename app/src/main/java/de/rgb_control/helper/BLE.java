@@ -9,8 +9,10 @@ public class BLE {
     private BluetoothGatt gatt;
     private BluetoothGattCharacteristic rgb_characteristic;
     private BluetoothGattCharacteristic neopixels_characteristic;
+    private BluetoothGattCharacteristic effect_characteristic;
     private BluetoothGattCharacteristic reboot;
     private BluetoothGattCharacteristic name;
+    private boolean iseffectrunning = false;
     private boolean onServiceInit = false;
     private int lastColor;
 
@@ -29,6 +31,7 @@ public class BLE {
         neopixels_characteristic = settings_service.getCharacteristic(UUID.fromString("99cf3c7b-0f41-4adc-ba90-0b5c6242af06"));
         reboot = settings_service.getCharacteristic(UUID.fromString("8b9787e5-8192-4104-a87e-a4fa80c304e6"));
         name=settings_service.getCharacteristic(UUID.fromString("3aa67643-5d02-4278-9db0-a95993c011d7"));
+        effect_characteristic = color_service.getCharacteristic(UUID.fromString("8e341dc8-2907-49af-9e34-9da998eec5fc"));
 
         onServiceInit = true;
     }
@@ -37,9 +40,12 @@ public class BLE {
     public void sendColor(int color, boolean ignoreSameColor){
 
         if(onServiceInit){
+            if(iseffectrunning){
+                stopEffect();
+            }
 
 
-                int red = (color >> 16) & 0xFF;
+            int red = (color >> 16) & 0xFF;
                 int green = (color >> 8) & 0xFF;
                 int blue = color & 0xFF;
 
@@ -62,6 +68,9 @@ public class BLE {
 
         if(onServiceInit){
 
+            if(iseffectrunning){
+                stopEffect();
+            }
 
             if(lastColor!=color){
 
@@ -84,9 +93,57 @@ public class BLE {
 
     }
 
+
+    public void sendColor(boolean waitforinit, final int color){
+
+        if(onServiceInit){
+
+            if(iseffectrunning){
+                stopEffect();
+            }
+
+
+                int red = (color >> 16) & 0xFF;
+                int green = (color >> 8) & 0xFF;
+                int blue = color & 0xFF;
+
+                String data = String.valueOf(red)+ " "+ String.valueOf(green)+ " "+ String.valueOf(blue);
+
+
+
+
+                rgb_characteristic.setValue(data);
+                gatt.writeCharacteristic(rgb_characteristic);
+                lastColor=color;
+
+
+        }
+        else {
+
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    while (!onServiceInit){
+
+                    }
+                    sendColor(true, color);
+                }
+            };
+
+            thread.start();
+
+
+        }
+
+
+    }
+
     public void sendColor(String color){
 
         if(onServiceInit){
+            if(iseffectrunning){
+                stopEffect();
+            }
 
             rgb_characteristic.setValue(color);
             gatt.writeCharacteristic(rgb_characteristic);
@@ -128,6 +185,43 @@ public class BLE {
 
     public int getColor(){
         return lastColor;
+    }
+
+
+    public void sendEffect(Effects effect){
+        if(onServiceInit){
+            switch (effect){
+                case RAINBOW:
+                    effect_characteristic.setValue("Rainbow");
+                    break;
+                case FIRE:
+                    effect_characteristic.setValue("Fire");
+                    break;
+                case RUNNING_LIGHTS:
+                    effect_characteristic.setValue("Running Lights");
+                    break;
+
+
+            }
+            gatt.writeCharacteristic(effect_characteristic);
+            iseffectrunning=true;
+        }
+
+    }
+
+    public void stopEffect(){
+        if(onServiceInit){
+            effect_characteristic.setValue("stop");
+            gatt.writeCharacteristic(effect_characteristic);
+            iseffectrunning=false;
+        }
+    }
+
+
+    public enum Effects{
+        RAINBOW,
+        RUNNING_LIGHTS,
+        FIRE
     }
 
 

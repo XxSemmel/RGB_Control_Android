@@ -1,6 +1,7 @@
 package de.rgb_control.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        control=MainActivity.control;
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         colorPicker = root.findViewById(R.id.colorPicker);
         Button maincolors = root.findViewById(R.id.maincolors);
@@ -57,17 +60,17 @@ public class HomeFragment extends Fragment {
 
         colorPicker.subscribe(colorObserver);
 
-        control=MainActivity.control;
 
-        if(control.getColor()!=0)
-        {
-            colorPicker.setInitialColor(control.getColor());
-
+        int color = control.getColor();
+        if(color==0){
+            colorPicker.setInitialColor(16711680);
+            control.sendColor(true,16711680);
         }
         else {
-            colorPicker.setInitialColor(16711680);
-            control.sendColor(16711680);
+            colorPicker.setInitialColor(control.getColor());
         }
+
+
 
 
         return root;
@@ -76,12 +79,12 @@ public class HomeFragment extends Fragment {
     ColorObserver colorObserver = new ColorObserver() {
         @Override
         public void onColor(int color, boolean fromUser, boolean shouldPropagate) {
+                if(fromUser){
 
-            if(fromUser){
+                    control.sendColor(color);
+                    powerstate=true;
+                }
 
-                control.sendColor(color);
-                powerstate=true;
-            }
         }
     };
 
@@ -96,7 +99,7 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void setOnFastChooseColorListener(int position, int color) {
-                    colorObserver.onColor(color, true, false );
+                    control.sendColor(color);
                     colorPicker.setInitialColor(color);
                 }
 

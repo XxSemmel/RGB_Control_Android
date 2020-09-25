@@ -14,7 +14,9 @@
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false">
 
-        <androidx.cardview.widget.CardView android:layout_height="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/rainbow"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -47,7 +49,9 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView android:layout_height="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/running_lights"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
