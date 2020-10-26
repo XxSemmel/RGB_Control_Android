@@ -15,6 +15,7 @@ public class BLE {
     private boolean iseffectrunning = false;
     private boolean onServiceInit = false;
     private int lastColor;
+    private Effects lastEffect;
 
     public BLE(BluetoothGatt gatt){
         this.gatt = gatt;
@@ -138,15 +139,34 @@ public class BLE {
 
     }
 
-    public void sendColor(String color){
+    public void sendColor(final String color){
 
         if(onServiceInit){
             if(iseffectrunning){
                 stopEffect();
+                Thread thread = new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(500);
+                            rgb_characteristic.setValue(color);
+                            gatt.writeCharacteristic(rgb_characteristic);
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+
+
+            }
+            else{
+                rgb_characteristic.setValue(color);
+                gatt.writeCharacteristic(rgb_characteristic);
             }
 
-            rgb_characteristic.setValue(color);
-            gatt.writeCharacteristic(rgb_characteristic);
+
 
         }
 
@@ -189,23 +209,29 @@ public class BLE {
 
 
     public void sendEffect(Effects effect){
-        if(onServiceInit){
-            switch (effect){
-                case RAINBOW:
-                    effect_characteristic.setValue("Rainbow");
-                    break;
-                case FIRE:
-                    effect_characteristic.setValue("Fire");
-                    break;
-                case RUNNING_LIGHTS:
-                    effect_characteristic.setValue("Running Lights");
-                    break;
+
+        if(lastEffect!=effect){
+            if(onServiceInit){
+                switch (effect){
+                    case RAINBOW:
+                        effect_characteristic.setValue("Rainbow");
+                        break;
+                    case FIRE:
+                        effect_characteristic.setValue("Fire");
+                        break;
+                    case RUNNING_LIGHTS:
+                        effect_characteristic.setValue("Running Lights");
+                        break;
 
 
+
+                }
+                lastEffect=effect;
+                gatt.writeCharacteristic(effect_characteristic);
+                iseffectrunning=true;
             }
-            gatt.writeCharacteristic(effect_characteristic);
-            iseffectrunning=true;
         }
+
 
     }
 

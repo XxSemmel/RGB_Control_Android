@@ -31,7 +31,7 @@ public class EffectFragment extends Fragment {
         return root;
     }
 
-    private CardView.OnClickListener runninglightsClicked = new CardView.OnClickListener(){
+    private final CardView.OnClickListener runninglightsClicked = new CardView.OnClickListener(){
 
         @Override
         public void onClick(View view) {
@@ -40,7 +40,7 @@ public class EffectFragment extends Fragment {
     };
 
 
-    private CardView.OnClickListener rainbowclick = new CardView.OnClickListener(){
+    private final CardView.OnClickListener rainbowclick = new CardView.OnClickListener(){
 
         @Override
         public void onClick(View view) {

@@ -58,6 +58,10 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+animator nav_default_enter_anim
+animator nav_default_exit_anim
+animator nav_default_pop_enter_anim
+animator nav_default_pop_exit_anim
 array appstyles_labels
 array appstyles_values
 array default_colors
@@ -1835,6 +1839,7 @@ id bounce
 id buttonOk
 id buttonPanel
 id buttons_layout
+id cache_measures
 id cancel
 id cancel_button
 id center
@@ -1876,6 +1881,7 @@ id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
 id deltaRelative
+id dependency_ordering
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1924,6 +1930,7 @@ id gone
 id graph
 id graph_wrap
 id group_divider
+id grouping
 id groups
 id hardware
 id hideable

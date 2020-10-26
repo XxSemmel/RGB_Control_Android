@@ -1,7 +1,6 @@
 package de.rgb_control.ui.settings;
 
 import android.content.DialogInterface;
-import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;

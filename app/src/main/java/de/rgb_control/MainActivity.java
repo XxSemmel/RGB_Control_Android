@@ -25,7 +25,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -44,11 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_BT_ENABLE = 0;
     private BluetoothAdapter mBluetoothAdapter  = null;
-    private List<BluetoothDevice> scanResults = new ArrayList<BluetoothDevice>();
+    private final List<BluetoothDevice> scanResults = new ArrayList<>();
     private MenuItem loading_indicator;
 
     private ArrayList<Data> devices;
-    private BluetoothDevice device;
     private ListView listView;
     private de.rgb_control.CustomAdapter adapter;
     private SwipeRefreshLayout refreshLayout;
@@ -88,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onBLEScan(){
-        ScanFilter.Builder builder = new ScanFilter.Builder();
-
         List<ScanFilter> scanFilters = new ArrayList<>();
         scanFilters.add(new ScanFilter.Builder().setManufacturerData(Integer.parseInt("6f63", 16),Helper.hexStringToByteArray("6E74726F6C")).build());
 
@@ -123,12 +119,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private ListView.OnItemClickListener listviewOnItemClick = new AdapterView.OnItemClickListener() {
+    private final ListView.OnItemClickListener listviewOnItemClick = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            int position = i;
             showLoading();
-            BluetoothDevice device= devices.get(position).device;
+            BluetoothDevice device= devices.get(i).device;
 
             device.connectGatt(getApplicationContext(), false, callback).connect();
             listView.setEnabled(false);
@@ -138,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private BluetoothGattCallback callback = new BluetoothGattCallback() {
+    private final BluetoothGattCallback callback = new BluetoothGattCallback() {
         @Override
         public void onConnectionStateChange(final BluetoothGatt gatt, int status, int newState) {
             super.onConnectionStateChange(gatt, status, newState);
@@ -162,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
                         builder.setTitle("Error");
                         builder.setMessage("Verbindung zum Gerät fehlgeschlagen!");
 
@@ -181,6 +176,9 @@ public class MainActivity extends AppCompatActivity {
 
                         AlertDialog alert = builder.create();
                         alert.show();
+
+
+
                     }
                 });
 
@@ -207,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private ScanCallback mLeScanCallback =
+    private final ScanCallback mLeScanCallback =
             new ScanCallback() {
 
                 @Override
@@ -215,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
                     super.onScanResult(callbackType, result);
 
-                    device = result.getDevice();
+                    BluetoothDevice device = result.getDevice();
 
 
                     if(!scanResults.contains(device)){

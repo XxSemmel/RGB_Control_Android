@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="de.rgb_control"
-4    android:versionCode="2"
-5    android:versionName="1.2" >
+4    android:versionCode="3"
+5    android:versionName="1.3" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="27"
@@ -32,7 +32,7 @@
 20        android:allowBackup="true"
 20-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:14:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.3.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/ae3468b444d41a56f261ecbb8448fe17/core-1.3.1/AndroidManifest.xml:24:18-86
+21-->[androidx.core:core:1.3.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/ff37b710ecf84191a2687617c776753e/core-1.3.1/AndroidManifest.xml:24:18-86
 22        android:debuggable="true"
 23        android:extractNativeLibs="false"
 24        android:icon="@mipmap/ic_launcher"
@@ -83,15 +83,15 @@
 47-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:36:13-49
 48
 49        <provider
-49-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/3af32d140be760521703c9060e27c1ae/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+49-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
 50            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-50-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/3af32d140be760521703c9060e27c1ae/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+50-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
 51            android:authorities="de.rgb_control.lifecycle-process"
-51-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/3af32d140be760521703c9060e27c1ae/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+51-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
 52            android:exported="false"
-52-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/3af32d140be760521703c9060e27c1ae/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+52-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
 53            android:multiprocess="true" />
-53-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/3af32d140be760521703c9060e27c1ae/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+53-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
 54    </application>
 55
 56</manifest>
