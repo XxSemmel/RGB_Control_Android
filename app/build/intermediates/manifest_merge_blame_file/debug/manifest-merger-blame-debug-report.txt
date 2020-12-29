@@ -1,97 +1,97 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="de.rgb_control"
-4    android:versionCode="3"
-5    android:versionName="1.3" >
+4    android:versionCode="4"
+5    android:versionName="1.4" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="27"
-8-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
+8-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml
+9-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.BLUETOOTH" />
-11-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:5:5-68
-11-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:5:22-65
+11-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:5:5-68
+11-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:5:22-65
 12    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-12-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:6:5-74
-12-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:6:22-71
+12-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:6:5-74
+12-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:6:22-71
 13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-13-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:7:5-79
-13-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:7:22-76
+13-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:7:5-79
+13-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:7:22-76
 14
 15    <uses-feature
-15-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:9:5-11:35
+15-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:9:5-11:35
 16        android:name="android.hardware.bluetooth_le"
-16-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:10:9-53
+16-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:10:9-53
 17        android:required="true" />
-17-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:11:9-32
+17-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:11:9-32
 18
 19    <application
-19-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:13:5-37:19
+19-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:13:5-38:19
 20        android:allowBackup="true"
-20-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:14:9-35
+20-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:14:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.3.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/ff37b710ecf84191a2687617c776753e/core-1.3.1/AndroidManifest.xml:24:18-86
+21-->[androidx.core:core:1.3.1] /home/benedikt/.gradle/caches/transforms-2/files-2.1/c560b8721f05ca12656603dd382025ab/core-1.3.1/AndroidManifest.xml:24:18-86
 22        android:debuggable="true"
 23        android:extractNativeLibs="false"
 24        android:icon="@mipmap/ic_launcher"
-24-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:15:9-43
+24-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:15:9-43
 25        android:label="@string/app_name"
-25-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:16:9-41
+25-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:16:9-41
 26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:17:9-54
+26-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:17:9-54
 27        android:supportsRtl="true"
-27-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:18:9-35
+27-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:18:9-35
 28        android:testOnly="true"
 29        android:theme="@style/AppTheme" >
-29-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:19:9-40
+29-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:19:9-40
 30        <activity
-30-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:20:9-22:61
+30-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:20:9-22:52
 31            android:name="de.rgb_control.MainNavigation"
-31-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:21:13-43
+31-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:21:13-43
 32            android:screenOrientation="portrait" />
-32-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:22:13-49
+32-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:22:13-49
 33        <activity
-33-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:23:9-33:20
+33-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:23:9-33:20
 34            android:name="de.rgb_control.SplashActivity"
-34-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:24:13-43
+34-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:24:13-43
 35            android:noHistory="true"
-35-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:27:13-37
+35-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:27:13-37
 36            android:screenOrientation="portrait"
-36-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:25:13-49
+36-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:25:13-49
 37            android:theme="@style/SplashScreenTheme" >
-37-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:26:13-53
+37-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:26:13-53
 38            <intent-filter>
-38-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:28:13-32:29
+38-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:28:13-32:29
 39                <action android:name="android.intent.action.MAIN" />
-39-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:29:17-69
-39-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:29:25-66
+39-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:29:17-69
+39-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:29:25-66
 40
 41                <category android:name="android.intent.category.LAUNCHER" />
-41-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:31:17-77
-41-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:31:27-74
+41-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:31:17-77
+41-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:31:27-74
 42            </intent-filter>
 43        </activity>
 44        <activity
-44-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:34:9-36:86
+44-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:34:9-37:40
 45            android:name="de.rgb_control.MainActivity"
-45-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:35:13-41
+45-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:35:13-41
 46            android:noHistory="true"
-46-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:36:50-74
+46-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:37:13-37
 47            android:screenOrientation="portrait" />
-47-->/home/benedikt/Projects/RGB_Control/app/src/main/AndroidManifest.xml:36:13-49
+47-->/home/benedikt/StudioProjects/RGB_Control_Android/app/src/main/AndroidManifest.xml:36:13-49
 48
 49        <provider
-49-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+49-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fa07a23f69071fa73b12f39bbc5eac81/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
 50            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-50-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+50-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fa07a23f69071fa73b12f39bbc5eac81/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
 51            android:authorities="de.rgb_control.lifecycle-process"
-51-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+51-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fa07a23f69071fa73b12f39bbc5eac81/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
 52            android:exported="false"
-52-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+52-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fa07a23f69071fa73b12f39bbc5eac81/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
 53            android:multiprocess="true" />
-53-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/d5906b530ddf7ea2d590e933f9f3c829/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+53-->[androidx.lifecycle:lifecycle-process:2.2.0] /home/benedikt/.gradle/caches/transforms-2/files-2.1/fa07a23f69071fa73b12f39bbc5eac81/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
 54    </application>
 55
 56</manifest>

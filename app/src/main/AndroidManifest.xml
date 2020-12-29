@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainNavigation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -33,7 +33,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait" android:noHistory="true"></activity>
+            android:screenOrientation="portrait"
+            android:noHistory="true" />
     </application>
 
 </manifest>

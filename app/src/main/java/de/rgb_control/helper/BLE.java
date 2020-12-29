@@ -50,7 +50,7 @@ public class BLE {
                 int green = (color >> 8) & 0xFF;
                 int blue = color & 0xFF;
 
-                String data = String.valueOf(red)+ " "+ String.valueOf(green)+ " "+ String.valueOf(blue);
+                String data = red + " "+ green+ " "+ blue;
 
 
 
@@ -79,7 +79,7 @@ public class BLE {
                 int green = (color >> 8) & 0xFF;
                 int blue = color & 0xFF;
 
-                String data = String.valueOf(red)+ " "+ String.valueOf(green)+ " "+ String.valueOf(blue);
+                String data = red + " "+ green + " "+ blue;
 
 
 
@@ -108,7 +108,7 @@ public class BLE {
                 int green = (color >> 8) & 0xFF;
                 int blue = color & 0xFF;
 
-                String data = String.valueOf(red)+ " "+ String.valueOf(green)+ " "+ String.valueOf(blue);
+                String data = red+ " "+ green + " "+ blue;
 
 
 
@@ -219,11 +219,6 @@ public class BLE {
                     case FIRE:
                         effect_characteristic.setValue("Fire");
                         break;
-                    case RUNNING_LIGHTS:
-                        effect_characteristic.setValue("Running Lights");
-                        break;
-
-
 
                 }
                 lastEffect=effect;
@@ -231,6 +226,25 @@ public class BLE {
                 iseffectrunning=true;
             }
         }
+
+
+    }
+
+    public void sendEffect(Effects effect, int color){
+
+            if(onServiceInit){
+                if (effect == Effects.RUNNING_LIGHTS)
+                {
+                        int red = (color >> 16) & 0xFF;
+                        int green = (color >> 8) & 0xFF;
+                        int blue = color & 0xFF;
+                        effect_characteristic.setValue("Lights " + red + " " + green +  " "+ blue);
+                }
+                lastEffect=effect;
+                gatt.writeCharacteristic(effect_characteristic);
+                iseffectrunning=true;
+            }
+
 
 
     }

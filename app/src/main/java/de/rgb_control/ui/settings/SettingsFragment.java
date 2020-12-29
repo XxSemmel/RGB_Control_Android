@@ -9,6 +9,9 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+
+import java.util.Objects;
+
 import de.rgb_control.MainActivity;
 import de.rgb_control.R;
 import de.rgb_control.helper.BLE;
@@ -27,12 +30,45 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         EditTextPreference neopixels = findPreference("numb");
         EditTextPreference rename = findPreference("name");
         ListPreference appstyle = findPreference("styles");
-        appstyle.setOnPreferenceChangeListener(appstylechange);
-        rename.setOnPreferenceChangeListener(namechange);
-        neopixels.setOnPreferenceChangeListener(neopixelchange);
+        Preference reboot = findPreference("reboot");
+        Objects.requireNonNull(appstyle).setOnPreferenceChangeListener(appstylechange);
+        Objects.requireNonNull(rename).setOnPreferenceChangeListener(namechange);
+        Objects.requireNonNull(neopixels).setOnPreferenceChangeListener(neopixelchange);
+        Objects.requireNonNull(reboot).setOnPreferenceClickListener(rebootclick);
 
     }
 
+
+    Preference.OnPreferenceClickListener rebootclick = new Preference.OnPreferenceClickListener(){
+
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("Information");
+            builder.setMessage("Wirklich neustarten?");
+
+            builder.setIcon(R.drawable.ic_info);
+            builder.setPositiveButton(
+                    "Neustarten",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            control.reboot();
+                            android.os.Process.killProcess(android.os.Process.myPid()); //exit
+                        }
+                    });
+            builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+
+            return true;
+        }
+    };
 
 
 

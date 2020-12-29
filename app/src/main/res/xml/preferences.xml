@@ -34,5 +34,12 @@
             android:dialogMessage="Gebe einen neuen Namen ein"
             android:icon="@drawable/rename"/>
 
+        <Preference
+            android:key="reboot"
+            android:title="Neustart"
+            android:summary="Neustart des Gerätes"
+            android:icon="@drawable/ic_power"/>
+
+
     </PreferenceCategory>
 </PreferenceScreen>
