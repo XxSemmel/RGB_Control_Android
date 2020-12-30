@@ -31,4 +31,8 @@ public class MainNavigation extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }

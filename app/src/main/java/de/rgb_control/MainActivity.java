@@ -1,137 +1,222 @@
 package de.rgb_control;
 
 import android.Manifest;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.bluetooth.le.BluetoothLeScanner;
-import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
-import android.bluetooth.le.ScanSettings;
+import android.companion.AssociationRequest;
+import android.companion.BluetoothLeDeviceFilter;
+import android.companion.CompanionDeviceManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.core.app.ActivityCompat;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import de.rgb_control.devicelist.Data;
 import de.rgb_control.helper.BLE;
 import de.rgb_control.helper.Helper;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements de.rgb_control.CustomAdapter.OnDeviceClickListener{
 
     public static BLE control;
 
     private static final int REQUEST_BT_ENABLE = 0;
-    private BluetoothAdapter mBluetoothAdapter  = null;
-    private final List<BluetoothDevice> scanResults = new ArrayList<>();
     private MenuItem loading_indicator;
-
     private ArrayList<Data> devices;
-    private ListView listView;
     private de.rgb_control.CustomAdapter adapter;
-    private SwipeRefreshLayout refreshLayout;
-    BluetoothLeScanner mBluetoothLeScanner;
+    private static final int SELECT_DEVICE_REQUEST_CODE = 42;
+    private BluetoothAdapter mBluetoothAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        devices = new ArrayList<>();
-
-        listView = findViewById(R.id.device_list);
-
-        this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        devices = new ArrayList<Data>();
+        RecyclerView recyclerView = findViewById(R.id.device_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter = new de.rgb_control.CustomAdapter(devices, this);
-        listView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(listviewOnItemClick);
 
-        mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
+        FloatingActionButton add_btn = findViewById(R.id.add_btn);
+        add_btn.setOnClickListener(add_btn_click);
 
-        refreshLayout = findViewById(R.id.updateDeviceListLayout);
 
-        refreshLayout.setOnRefreshListener(onRefreshListener);
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         requestPermissions();
 
         enableBt();
 
-        onBLEScan();
-
+        LoadDevices();
 
 
 
     }
 
-    private void onBLEScan(){
-        List<ScanFilter> scanFilters = new ArrayList<>();
-        scanFilters.add(new ScanFilter.Builder().setManufacturerData(Integer.parseInt("6f63", 16),Helper.hexStringToByteArray("6E74726F6C")).build());
-
-        mBluetoothLeScanner.startScan(scanFilters, new ScanSettings.Builder().build(),mLeScanCallback);
-
-
-
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-                mBluetoothLeScanner.stopScan(mLeScanCallback);
-
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-                        // Stuff that updates the UI
-                        hideLoading();
-                        refreshLayout.setRefreshing(false);
-
-                    }
-                });
-
-
-            }
-        }, 3000);
-
-
+    private void LoadDevices(){
+        devices.addAll(getPairedDevices());
+        adapter.notifyDataSetChanged();
     }
 
-
-    private final ListView.OnItemClickListener listviewOnItemClick = new AdapterView.OnItemClickListener() {
+    private final FloatingActionButton.OnClickListener add_btn_click = new View.OnClickListener() {
         @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            showLoading();
-            BluetoothDevice device= devices.get(i).device;
-
-            device.connectGatt(getApplicationContext(), false, callback).connect();
-            listView.setEnabled(false);
-
-
+        public void onClick(View v) {
+            LinkDevice();
         }
     };
 
+
+    private ArrayList<Data> getPairedDevices(){
+        SharedPreferences prefs = this.getSharedPreferences(
+                "de.rgb_control.PairedDevices", Context.MODE_PRIVATE);
+
+        String json = prefs.getString("data", "");
+
+        if(json.length()!=0){
+            Gson gson = new Gson();
+            Type type = new TypeToken <ArrayList<Data>> () {}.getType();
+            return gson.fromJson(json, type);
+        }
+        else return new ArrayList<Data>();
+
+    }
+
+    private void AddDevice(Data data){
+        ArrayList<Data> pairedDevices = new ArrayList<Data>(getPairedDevices());
+        if (data != null)
+        {
+            pairedDevices.add(data);
+        }
+        SharedPreferences prefs = getSharedPreferences("de.rgb_control.PairedDevices", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(pairedDevices);
+        editor.putString("data", json);
+        editor.apply();
+
+    }
+
+    private void MoveDevice(int fromPosition, int toPosition) {
+        ArrayList<Data> pairedDevices = new ArrayList<Data>(getPairedDevices());
+        Data row = pairedDevices.get(fromPosition);
+        pairedDevices.remove(fromPosition);
+        pairedDevices.add(toPosition, row);
+        SharedPreferences prefs = getSharedPreferences("de.rgb_control.PairedDevices", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(pairedDevices);
+        editor.putString("data", json);
+        editor.apply();
+    }
+
+    private void RemoveDevice(int index){
+        ArrayList<Data> pairedDevices = new ArrayList<Data>(getPairedDevices());
+        pairedDevices.remove(index);
+        SharedPreferences prefs = getSharedPreferences("de.rgb_control.PairedDevices", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(pairedDevices);
+        editor.putString("data", json);
+        editor.apply();
+    }
+
+    private void LinkDevice(){
+        ScanFilter scanFilter = new ScanFilter.Builder().setManufacturerData(Integer.parseInt("6f63", 16),Helper.hexStringToByteArray("6E74726F6C")).build();
+
+        CompanionDeviceManager deviceManager = getSystemService(CompanionDeviceManager.class);
+        BluetoothLeDeviceFilter deviceFilter = new BluetoothLeDeviceFilter.Builder()
+                .setScanFilter(scanFilter)
+                .build();
+
+        AssociationRequest pairingRequest = new AssociationRequest.Builder()
+                .addDeviceFilter(deviceFilter)
+                .build();
+
+        deviceManager.associate(pairingRequest, new CompanionDeviceManager.Callback() {
+            @Override
+            public void onDeviceFound(IntentSender chooserLauncher) {
+
+                try {
+                    startIntentSenderForResult(chooserLauncher,
+                            SELECT_DEVICE_REQUEST_CODE, null, 0, 0, 0);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(CharSequence error) {
+
+            }
+        }, null);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==SELECT_DEVICE_REQUEST_CODE && resultCode == Activity.RESULT_OK)
+        {
+
+            ScanResult scanResult = data.getParcelableExtra(CompanionDeviceManager.EXTRA_DEVICE);
+
+            BluetoothDevice deviceToPair =  scanResult.getDevice();
+
+            AddDevice(new Data(deviceToPair.getName(), R.drawable.ic_launcher, deviceToPair.getAddress()));
+            devices.clear();
+            devices.addAll(getPairedDevices());
+            adapter.notifyDataSetChanged();
+
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private final BluetoothGattCallback callback = new BluetoothGattCallback() {
         @Override
@@ -157,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                         builder.setTitle("Error");
                         builder.setMessage("Verbindung zum Gerät fehlgeschlagen!");
 
@@ -169,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int id) {
                                         gatt.disconnect();
                                         gatt.close();
-                                        listView.setEnabled(true);
+                                        adapter.setClickable(true);
                                         hideLoading();
                                     }
                                 });
@@ -195,51 +280,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-    SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
-        @Override
-        public void onRefresh() {
-            onBLEScan();
-            showLoading();
-        }
-    };
-
-
-    private final ScanCallback mLeScanCallback =
-            new ScanCallback() {
-
-                @Override
-                public void onScanResult(int callbackType, final ScanResult result) {
-
-                    super.onScanResult(callbackType, result);
-
-                    BluetoothDevice device = result.getDevice();
-
-
-                    if(!scanResults.contains(device)){
-                        scanResults.add(device);
-                        devices.add(new Data(result.getDevice().getName(), R.drawable.ic_launcher, device));
-                        adapter.notifyDataSetChanged();
-                    }
-
-
-                }
-
-                @Override
-                public void onScanFailed(int errorCode) {
-                    super.onScanFailed(errorCode);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "Scan failed", Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-
-                    hideLoading();
-                }
-
-            };
 
     public void enableBt(){
         if (mBluetoothAdapter == null) {
@@ -309,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
 
         loading_indicator = menu.findItem(R.id.loading_indcator);
         loading_indicator.setActionView(R.layout.loading_indicator);
+        hideLoading();
 
         return true;
     }
@@ -340,7 +381,79 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onDeviceItemClick(int position) {
+        showLoading();
+
+        BluetoothManager bluetoothManager = (BluetoothManager)getSystemService(Context.BLUETOOTH_SERVICE);
+        BluetoothDevice bluetoothDevice = bluetoothManager.getAdapter().getRemoteDevice(devices.get(position).deviceAddress);
+
+        bluetoothDevice.connectGatt(getApplicationContext(), false, callback).connect();
+        adapter.setClickable(false);
+    }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
 
 
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            MoveDevice(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+            adapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+            return true;
+        }
 
+        @Override
+        public boolean isLongPressDragEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isItemViewSwipeEnabled() {
+            return true;
+        }
+
+        @Override
+        public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+            int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+            int swipeFlags = ItemTouchHelper.START;
+            return makeMovementFlags(dragFlags, swipeFlags);
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            RemoveDevice(viewHolder.getAdapterPosition());
+            devices.remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+
+            Drawable icon = ContextCompat.getDrawable(getApplicationContext(),
+                    R.drawable.ic_delete);
+            final ColorDrawable background = new ColorDrawable(Color.RED);
+
+            View itemView = viewHolder.itemView;
+            int backgroundCornerOffset = 20;
+
+            int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+            int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+            int iconBottom = iconTop + icon.getIntrinsicHeight();
+
+            if (dX < 0) { // Swiping to the left
+                int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
+                int iconRight = itemView.getRight() - iconMargin;
+                icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+
+                background.setBounds(itemView.getRight() + ((int) dX) - backgroundCornerOffset,
+                        itemView.getTop(), itemView.getRight(), itemView.getBottom());
+            }
+            else { // view is unSwiped
+                background.setBounds(0, 0, 0, 0);
+            }
+            background.draw(c);
+            icon.draw(c);
+        }
+    };
 }
