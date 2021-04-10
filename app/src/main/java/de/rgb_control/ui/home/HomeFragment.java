@@ -122,7 +122,7 @@ public class HomeFragment extends Fragment {
         colors.add("#B10DC9");//purple
         colors.add("#00eeff");//lightblue
         colors.add("#ff00cc");//lila
-        colors.add("#996633");//brown
+        colors.add("#ff2700");//orange
         colors.add("#cccc00");//darkyellow
         return colors;
     }
